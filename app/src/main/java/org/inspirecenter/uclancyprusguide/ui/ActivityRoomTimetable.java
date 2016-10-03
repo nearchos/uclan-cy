@@ -47,14 +47,10 @@ public class ActivityRoomTimetable extends AppCompatActivity {
     private Spinner roomSpinner;
     private String [] rooms;
 
-    private static String SECURITY_TOKEN;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_timetable);
-
-        SECURITY_TOKEN = getString(R.string.timetable_security_token);
 
         final ActionBar actionBar =  getActionBar();
         if(actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
@@ -157,12 +153,14 @@ public class ActivityRoomTimetable extends AppCompatActivity {
         }
     }
 
-    public static final String BASE_URL = "https://cyprustimetable.uclan.ac.uk/TimetableAPI/TimetableWebService.asmx/getRoomTimetable?securityToken=" + SECURITY_TOKEN + "&ROOM_CODE=";
+    public static final String BASE_URL = "https://cyprustimetable.uclan.ac.uk/TimetableAPI/TimetableWebService.asmx/getRoomTimetable?securityToken=$$SECURITY_TOKEN$$&ROOM_CODE=";
 
     private String fetchTimetableForRoom(final String roomCode) {
-        // form and encode URL (only parameters need encoding)
-        String encodedURL = BASE_URL + roomCode; // URLEncoder.encode(getString(R.string.magic), "UTF-8");
 
+        final String securityToken = getString(R.string.timetable_security_token);
+
+        // form and encode URL (only parameters need encoding)
+        String encodedURL = BASE_URL.replace("$$SECURITY_TOKEN$$", securityToken) + roomCode; // URLEncoder.encode(getString(R.string.magic), "UTF-8");
         // send get
         HttpURLConnection httpURLConnection = null;
         try {
