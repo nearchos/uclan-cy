@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.inspirecenter.uclancyprusguide">
 
+    <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
@@ -54,11 +55,22 @@
                 android:value=".ui.ActivityHome" />
         </activity>
 
-        <activity android:name=".ui.ActivityAbout"
+        <activity
+            android:name=".ui.ActivityAbout"
             android:parentActivityName=".ui.ActivityHome">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.ActivityHome" />
+        </activity>
+
+        <activity android:name=".ui.ActivityAttendance">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ActivityHome" />
+            <intent-filter>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
 
     </application>

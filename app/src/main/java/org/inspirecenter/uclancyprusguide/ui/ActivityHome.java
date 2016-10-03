@@ -33,6 +33,7 @@ public class ActivityHome extends AppCompatActivity
     private int selectedFragment = 0;
 
     private FragmentNews fragmentNews = new FragmentNews();
+    private FragmentGallery fragmentGallery = new FragmentGallery();
     private FragmentContact fragmentContact = new FragmentContact();
 
     private Toolbar toolbar;
@@ -104,7 +105,7 @@ public class ActivityHome extends AppCompatActivity
         } else if (id == R.id.action_room_timetable) {
             startActivity(new Intent(this, ActivityRoomTimetable.class));
         } else if (id == R.id.action_attendance) {
-            Toast.makeText(ActivityHome.this, R.string.Not_available_yet, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ActivityAttendance.class));
         } else if (id == R.id.action_about) {
             startActivity(new Intent(this, ActivityAbout.class));
         }
@@ -122,7 +123,9 @@ public class ActivityHome extends AppCompatActivity
             fragmentManager.executePendingTransactions();
         } else if (selectedFragment == FRAGMENT_ID_GALLERY) {
             toolbar.setSubtitle(getString(R.string.Gallery));
-            Toast.makeText(ActivityHome.this, R.string.Not_available_yet, Toast.LENGTH_SHORT).show();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragmentGallery).commit();
+            fragmentManager.executePendingTransactions();
+Toast.makeText(ActivityHome.this, R.string.Not_available_yet, Toast.LENGTH_SHORT).show();
         } else if (selectedFragment == FRAGMENT_ID_CONTACT) {
             toolbar.setSubtitle(getString(R.string.Contact));
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragmentContact).commit();

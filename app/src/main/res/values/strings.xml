@@ -33,6 +33,7 @@
     <string name="Data_fetched">Data_fetched</string>
     <string name="session_type_with_lecturer">%1$s with %2$s</string>
     <string name="Error_for">Error: %1$s</string>
+    <string name="Error_connecting_to_timetable_service">Error connecting to the timetable service</string>
     <string name="Showing_data_for">Showing data for %1$s</string>
     <string name="Select_a_room_or_scan_a_barcode">Select a room or scan a barcode or touch to NFC</string>
     <string name="No_sessions_found_for_this_room_today">No sessions found for this room today</string>
@@ -57,5 +58,9 @@
     <string name="inspire_url" translatable="false">http://inspirecenter.org</string>
     <string name="Tell_the_world">Tell the world</string>
     <string name="Share_with_your_friends">Share with your friends</string>
+
+    <string name="Barcode_scan">Barcode scan</string>
+    <string name="Missing_NFC_hardware">Missing NFC hardware</string>
+    <string name="NFC_disabled">NFC disabled</string>
 
 </resources>

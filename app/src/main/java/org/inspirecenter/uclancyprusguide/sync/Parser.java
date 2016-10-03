@@ -15,7 +15,11 @@ public class Parser {
     static public String extractJSON(final String xml) {
         int begin = xml.indexOf('[');
         int end = xml.indexOf(']') + 1;
-        return xml.substring(begin, end);
+
+        if(begin == -1 || end == -1) // handle invalid input
+            return null;
+        else
+            return xml.substring(begin, end);
     }
 
     static public TimetableSession [] getRoomTimetableSessions(final String json)  throws JSONException {
@@ -27,7 +31,7 @@ public class Parser {
         return timetableSessions;
     }
 
-    static public TimetableSession getTimetableSession(final JSONObject session) throws JSONException {
+    static private TimetableSession getTimetableSession(final JSONObject session) throws JSONException {
         return new TimetableSession(
                 session.getString("MODULE_CODE"),
                 session.getString("MODULE_NAME"),
