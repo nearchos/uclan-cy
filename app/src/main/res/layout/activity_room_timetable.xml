@@ -23,8 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Scan"
-            android:drawableStart="@drawable/ic_camera_alt_black_24dp"
-            android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+            android:drawableStart="@drawable/ic_barcode"
             android:id="@+id/activity_room_timetable_scan_barcode"
             android:layout_gravity="center_vertical" />
 

@@ -59,8 +59,13 @@
     <string name="Tell_the_world">Tell the world</string>
     <string name="Share_with_your_friends">Share with your friends</string>
 
+    <string name="Nfc_scan">NFC scan</string>
     <string name="Barcode_scan">Barcode scan</string>
     <string name="Missing_NFC_hardware">Missing NFC hardware</string>
-    <string name="NFC_disabled">NFC disabled</string>
+    <string name="NFC_missing">No NFC hardware detected.</string>
+    <string name="NFC_disabled">NFC is disabled.</string>
+    <string name="NFC_enabled">NFC is enabled. Just touch the card on the device to scan it.</string>
+    <string name="Enable">Enable</string>
+    <string name="Dismiss">Dismiss</string>
 
 </resources>

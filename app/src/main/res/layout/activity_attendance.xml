@@ -4,24 +4,59 @@
     android:id="@+id/activity_attendance"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.inspirecenter.uclancyprusguide.ui.ActivityAttendance">
 
-    <Button
-        android:id="@+id/activity_attendance_scan_barcode"
-        android:onClick="scanBarcode"
-        android:text="@string/Barcode_scan"
+    <Spinner
+        android:id="@+id/activity_attendance_spinner"
+        android:padding="4dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/activity_attendance_spinner_separator"
+        android:layout_below="@id/activity_attendance_spinner"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <LinearLayout
+        android:id="@+id/activity_attendance_button_row"
+        android:orientation="horizontal"
+        android:layout_below="@id/activity_attendance_spinner_separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/activity_attendance_scan_nfc"
+            android:onClick="scanNfc"
+            android:text="@string/Nfc_scan"
+            android:drawableStart="@drawable/ic_nfc_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/activity_attendance_scan_barcode"
+            android:drawableStart="@drawable/ic_barcode"
+            android:onClick="scanBarcode"
+            android:text="@string/Barcode_scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/activity_attendance_label"
         android:background="#fee"
-        android:layout_below="@id/activity_attendance_scan_barcode"
+        android:layout_below="@id/activity_attendance_button_row"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="50dp" />
+
+    <ListView
+        android:id="@+id/activity_attendance_students_list"
+        android:layout_below="@id/activity_attendance_label"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

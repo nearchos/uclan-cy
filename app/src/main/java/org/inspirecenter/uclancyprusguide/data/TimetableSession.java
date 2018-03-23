@@ -3,6 +3,7 @@ package org.inspirecenter.uclancyprusguide.data;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * @author Nearchos Paspallis
@@ -67,13 +68,27 @@ public class TimetableSession implements Serializable, Comparable {
         return sessionDescription;
     }
 
+    private final String [] DAYS = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+
+    private int compareDays(String dayOfWeekLeft, final String dayOfWeekRight) {
+        int indexLeft = Arrays.binarySearch(DAYS, dayOfWeekLeft);
+        int indexRight = Arrays.binarySearch(DAYS, dayOfWeekRight);
+        return indexRight - indexLeft;
+    }
+
     @Override
     public int compareTo(@NonNull Object anotherTimetableSession) {
-        return startTimeFormatted.compareTo(((TimetableSession) anotherTimetableSession).startTimeFormatted);
+        final TimetableSession timetableSession = (TimetableSession) anotherTimetableSession;
+        int compareDays = compareDays(this.dayOfWeek, timetableSession.dayOfWeek);
+        return compareDays == 0 ? startTimeFormatted.compareTo(timetableSession.startTimeFormatted) : compareDays;
     }
 
     @Override
     public String toString() {
+        return dayOfWeek + " " + getStartTimeFormatted() + ": " + moduleCode + " - " + moduleName;
+    }
+
+    public String toFullString() {
         return "TimetableSession{" +
                 "moduleCode='" + moduleCode + '\'' +
                 ", moduleName='" + moduleName + '\'' +
